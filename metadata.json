@@ -1,0 +1,5 @@
+{
+  "name": "AI Crop Yield Predictor",
+  "description": "An application that utilizes machine learning algorithms, powered by the Gemini API, to predict crop yields based on historical and real-time agricultural data, providing accurate predictions for better farm planning.",
+  "requestFramePermissions": []
+}
