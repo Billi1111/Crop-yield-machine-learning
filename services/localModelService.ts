@@ -1,6 +1,9 @@
 import type { PredictionInput, PredictionOutput } from '../types';
 
-const LOCAL_API_URL = 'http://127.0.0.1:5000/predict';
+// Use environment variable if available, otherwise default to localhost
+// In Docker, this will be accessible via the exposed port
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5001';
+const LOCAL_API_URL = BACKEND_URL.endsWith('/predict') ? BACKEND_URL : `${BACKEND_URL}/predict`;
 
 // The input format already matches what we need for JSON serialization.
 // We just need to ensure the property names match what the Python server expects.
@@ -49,7 +52,7 @@ export const predictWithLocalModel = async (
     console.error("Error calling local model API:", error);
     if (error instanceof TypeError) { // This often indicates a network error (e.g., server not running, CORS issue)
         throw new Error(
-            "Could not connect to the local Python model server. Please ensure it is running on http://127.0.0.1:5000 and that CORS is enabled."
+            `Could not connect to the local Python model server. Please ensure it is running on ${BACKEND_URL} and that CORS is enabled.`
         );
     }
     // Re-throw other errors to be caught by the main handler

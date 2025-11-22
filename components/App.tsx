@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import type { PredictionInput, PredictionOutput } from './types';
-import { predictCropYield } from './services/geminiService';
-import { predictWithLocalModel } from './services/localModelService';
-import PredictionForm from './components/PredictionForm';
-import PredictionResult from './components/PredictionResult';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import ModelSelector from './components/ModelSelector';
+import type { PredictionInput, PredictionOutput } from '../types';
+import { predictCropYield } from '../services/geminiService';
+import { predictWithLocalModel } from '../services/localModelService';
+import PredictionForm from './PredictionForm';
+import PredictionResult from './PredictionResult';
+import Header from './Header';
+import Footer from './Footer';
+import ModelSelector from './ModelSelector';
 
 type ModelType = 'gemini' | 'local';
 
